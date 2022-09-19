@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 my-5">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -16,10 +16,10 @@
                     <tbody>
                         @forelse ($posts as $post)
                             <tr>
-                                <th scope="row">{{ $post->id }}</th>
-                                <td>{{ $post->post_title }}</td>
-                                <td>{{ $post->post_author }}</td>
-                                <td>{{ $post->post_date }}</td>
+                                <th scope="row" class="align-middle">{{ $post->id }}</th>
+                                <td class="align-middle"><a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->post_title }}</a></td>
+                                <td class="align-middle">{{ $post->post_author }}</td>
+                                <td class="align-middle">{{ $post->post_date }}</td>
                                 <td>
                                     <a href="#" class="btn btn-success">Edit</a>
                                     <a href="#" class="btn btn-danger">Delete</a>
