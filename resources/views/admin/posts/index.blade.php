@@ -17,11 +17,12 @@
                         @forelse ($posts as $post)
                             <tr>
                                 <th scope="row" class="align-middle">{{ $post->id }}</th>
-                                <td class="align-middle"><a href="{{ route('admin.posts.show', $post->id) }}">{{ $post->post_title }}</a></td>
+                                <td class="align-middle">{{ $post->post_title }}</td>
                                 <td class="align-middle">{{ $post->post_author }}</td>
                                 <td class="align-middle">{{ $post->post_date }}</td>
                                 <td>
-                                    <a href="#" class="btn btn-success">Edit</a>
+                                    <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary">View</a>
+                                    <a href="#" class="btn btn-success mx-1">Edit</a>
                                     <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
