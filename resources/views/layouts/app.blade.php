@@ -33,12 +33,12 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        {{-- @guest
+                        @guest
                         @else
                             <li>
-                                <a href="{{ route('admin.posts.index') }}">Posts</a>
+                                <a href="{{ route('admin.posts.create') }}" class="btn btn-outline-primary">Add new post</a>
                             </li>
-                        @endguest --}}
+                        @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
