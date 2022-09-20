@@ -29,7 +29,7 @@
                                 <td class="align-middle">{{ $post->post_date }}</td>
                                 <td>
                                     <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-primary">View</a>
-                                    <a href="#" class="btn btn-success mx-1">Edit</a>
+                                    <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-success mx-1">Edit</a>
                                     <a href="#" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>

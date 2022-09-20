@@ -47,9 +47,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-
         $validateData = $request->validate($this->validateData);
+        
+        $data = $request->all();
 
         $data['post_author'] = Auth::user()->name;
         $data['post_date'] = new DateTime();
@@ -78,7 +78,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('admin.posts.edit', ['post' => $post]);
     }
 
     /**
@@ -90,7 +91,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validateData = $request->validate($this->validateData);
+        
+        $oldPost = Post::findOrFail($id);
+        $data = $request->all();
+
+        $data['post_author'] = $oldPost->post_author;
+        $data['post_date'] = $oldPost->post_date;
+
+        $oldPost->update($data);
+        return redirect()->route('admin.posts.show', ['post' => $oldPost->id])->with('success', 'The post ' . '"' . $data['post_title'] . '"' . ' has been modified successfully');
     }
 
     /**
