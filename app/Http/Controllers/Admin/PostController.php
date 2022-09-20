@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Auth;
 use App\Models\Post;
 use App\Http\Controllers\Controller;
+use DateTime;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -38,7 +40,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $data['post_author'] = Auth::user()->name;
+        $data['post_date'] = new DateTime();
+
+        Post::create($data);
+        return redirect()->route('admin.posts.index')->with('success', 'The post ' . '"' . $data['post_title'] . '"' . ' has been created successfully');
     }
 
     /**
