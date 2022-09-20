@@ -15,6 +15,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $validateData = [
+        'post_title' => 'required|min:3|max:255|unique:posts',
+        'post_image' => 'required|active_url',
+        'post_content' => 'required|min:10|max:255',
+    ];
+
     public function index()
     {
         $posts = Post::all();
@@ -41,6 +48,8 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $validateData = $request->validate($this->validateData);
 
         $data['post_author'] = Auth::user()->name;
         $data['post_date'] = new DateTime();
