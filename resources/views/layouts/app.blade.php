@@ -36,13 +36,20 @@
                         @guest
                         @else
                             <li>
-                                <a href="{{ route('admin.posts.create') }}" class="btn btn-outline-primary">Add new post</a>
+                                <a href="{{ route('admin.posts.index') }}" class="mx-3">Post</a>
                             </li>
                         @endguest
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        @guest
+                        @else
+                            <li>
+                                <a href="{{ route('admin.posts.create') }}" class="btn btn-outline-primary mx-3">Add new post</a>
+                            </li>
+                        @endguest
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
